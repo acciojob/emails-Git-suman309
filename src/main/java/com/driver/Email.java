@@ -31,6 +31,29 @@ public class Email {
                 && newPassword.matches(".*[0-9].*")
                 && newPassword.matches(".*[^a-zA-Z0-9 ].*")){
             this.password=newPassword;
+            System.out.println("Password changed successfully");
+        } else {
+            System.out.println("Your Current Password is not in our database");
         }
     }
 }
+
+
+//    public void changePassword(String oldPassword, String newPassword) {
+//        if (password.equals(oldPassword)) {
+//            if (passWordValidation(newPassword)) {
+//                System.out.println("Password changed successfully");
+//                this.password = newPassword;
+//            } else {
+//                System.out.println("The new password is not valid !!!");
+//            }
+//        } else {
+//            System.out.println("Your Current Password is not in our database");
+//        }
+//    }
+//
+//    private boolean passWordValidation(String password) {
+//        return password.length() >= 8 && password.matches(".[A-Z].")
+//                && password.matches(".[a-z].") && password.matches(".\\d.")
+//                && password.matches(".[^a-zA-Z0-9].");
+//    }
