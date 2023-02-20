@@ -38,22 +38,66 @@ public class Email {
         }
     }*/
         //-----------------------------------------------------------
-            if (password.equals(oldPassword)) {
-                if (passWordValidation(newPassword)) {
-                    System.out.println("Password changed successfully");
-                    this.password = newPassword;
-                } else {
-                    System.out.println("The new password is not valid !!!");
-                }
-            } else {
-                System.out.println("Your Current Password is not in our database");
+//            if (password.equals(oldPassword)) {
+//                if (passWordValidation(newPassword)) {
+//                    System.out.println("Password changed successfully");
+//                    this.password = newPassword;
+//                } else {
+//                    System.out.println("The new password is not valid !!!");
+//                }
+//            } else {
+//                System.out.println("Your Current Password is not in our database");
+//            }
+//        }
+//
+//        private boolean passWordValidation (String password){
+//            return password.length() >= 8 && password.matches(".[A-Z].")
+//                    && password.matches(".[a-z].") && password.matches(".\\d.")
+//                    && password.matches(".[^a-zA-Z0-9].");
+//    }
+    //-----------------------------------------
+
+        if(oldPassword.equals(password)){
+            if(isValid(newPassword)){
+                System.out.println("Password changed successfully!");
+                this.password = newPassword;
+            }
+            else{
+                System.out.println("The new password is not valid!");
             }
         }
+        else{
+            System.out.println("The given password does not match current password!");
+        }
+    }
 
-        private boolean passWordValidation (String password){
-            return password.length() >= 8 && password.matches(".[A-Z].")
-                    && password.matches(".[a-z].") && password.matches(".\\d.")
-                    && password.matches(".[^a-zA-Z0-9].");
+    private Boolean isValid(String password){
+        Boolean capitalLetter = false;
+        Boolean smallLetter = false;
+        Boolean digit = false;
+        Boolean specialCharacter = false;
+
+        if(password.length() < 8){
+            return false;
+        }
+
+        for(int i = 0; i<password.length(); i++){
+            char ch = password.charAt(i);
+            if((ch >= 'A') && (ch <= 'Z')){
+                capitalLetter = true;
+            }
+            else if((ch >= 'a') && (ch <= 'z')){
+                smallLetter = true;
+            }
+            else if((ch >= '0') && (ch <= '9')){
+                digit = true;
+            }
+            else specialCharacter = true;
+        }
+
+        if(capitalLetter && smallLetter && digit && specialCharacter)
+            return true;
+        return false;
     }
 }
 
