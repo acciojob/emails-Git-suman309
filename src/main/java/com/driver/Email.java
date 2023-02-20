@@ -95,8 +95,9 @@ public class Email {
             else specialCharacter = true;
         }
 
-        if(capitalLetter && smallLetter && digit && specialCharacter)
+        if(capitalLetter && smallLetter && digit && specialCharacter) {
             return true;
+        }
         return false;
     }
 }
